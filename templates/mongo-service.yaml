@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.mongo.name }}-clusterip-service
+
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ .Values.mongo.image.containerPort }}
+      targetPort: {{ .Values.mongo.image.containerPort }}
+  
+  selector:
+    server: {{ .Values.mongo.name }}

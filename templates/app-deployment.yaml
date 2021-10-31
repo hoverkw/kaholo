@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.nodeapp.name }}-deployment
+
+spec:
+  replicas: {{ .Values.nodeapp.replicas }}
+  selector:
+    matchLabels:
+      server: {{ .Values.nodeapp.name }}
+
+  template:
+    metadata:
+      labels:
+        server: {{ .Values.nodeapp.name }}
+
+    spec:
+      containers:
+      - name: {{ .Values.nodeapp.name }}
+        image: {{ .Values.nodeapp.image.name }}:{{ .Values.nodeapp.image.tag }}
+        ports:
+          - containerPort: {{ .Values.nodeapp.image.exposedPort }}
+        env:
+          - name: NODE_ENV
+            value: production

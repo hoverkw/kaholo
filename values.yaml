@@ -1,0 +1,35 @@
+nodeapp:
+  name: nodeapp
+
+  image:
+    name: 0hover/nodeapp
+    tag: v3
+    exposedPort: 3000
+
+  replicas: 1
+
+  service:
+    type: ClusterIP
+
+nginx:
+  name: nginx
+
+  image:
+    name: 0hover/app-nginx
+    tag: v3
+    containerPort: 80
+
+  replicas: 1
+
+  service:
+    type: LoadBalancer
+
+mongo:
+  name: mongo
+
+  image:
+    name: mongo
+    tag: latest
+    containerPort: 27017
+
+  replicas: 1
