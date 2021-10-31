@@ -20,3 +20,4 @@ spec:
         image: {{ .Values.mongo.image.name }}:{{ .Values.mongo.image.tag }}
         ports:
           - containerPort: {{ .Values.mongo.image.containerPort }}
+        imagePullPolicy: IfNotPresent

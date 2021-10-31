@@ -20,3 +20,4 @@ spec:
         image: {{ .Values.nginx.image.name }}:{{ .Values.nginx.image.tag }}
         ports:
           - containerPort: {{ .Values.nginx.image.containerPort }}
+        imagePullPolicy: IfNotPresent
